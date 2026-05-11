@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Our Wedding · A Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Italiana&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5efe6;
+    --cream-deep: #ede4d3;
+    --ink: #2a2520;
+    --ink-soft: #5c5247;
+    --accent: #8a6d4b;
+    --accent-deep: #6b5238;
+    --rule: rgba(42, 37, 32, 0.18);
+    --shadow: 0 30px 60px -30px rgba(42, 37, 32, 0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(138, 109, 75, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(138, 109, 75, 0.03) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* HEADER */
+  header {
+    position: relative;
+    padding: 7rem 2rem 5rem;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .ornament {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.2s forwards;
+  }
+
+  h1 {
+    font-family: 'Italiana', serif;
+    font-weight: 400;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.4s forwards;
+  }
+
+  .date-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 1.2s 0.6s forwards;
+  }
+
+  .date-line .rule {
+    height: 1px;
+    width: 60px;
+    background: var(--rule);
+  }
+
+  .intro {
+    max-width: 540px;
+    margin: 0 auto 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    opacity: 0;
+    animation: fadeUp 1.2s 0.8s forwards;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 1.2s 1s forwards;
+  }
+
+  .btn {
+    background: transparent;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    padding: 0.95rem 2rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .btn:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .btn.primary {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .btn.primary:hover {
+    background: var(--accent-deep);
+    border-color: var(--accent-deep);
+  }
+
+  .btn svg { width: 14px; height: 14px; }
+
+  /* DOWNLOAD HERO BANNER (sticky-ish call-out) */
+  .download-banner {
+    background: var(--cream-deep);
+    padding: 3rem 2rem;
+    text-align: center;
+    margin: 2rem auto 4rem;
+    max-width: 900px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    z-index: 2;
+  }
+
+  .download-banner h2 {
+    font-family: 'Italiana', serif;
+    font-weight: 400;
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .download-banner p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* DIVIDER */
+  .divider {
+    text-align: center;
+    margin: 2rem 0 4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .divider span {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-size: 1.25rem;
+    padding: 0 1.5rem;
+    background: var(--cream);
+    position: relative;
+  }
+
+  .divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 1px;
+    background: var(--rule);
+    z-index: -1;
+  }
+
+  /* GALLERY */
+  .gallery-wrap {
+    padding: 0 2rem 4rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .gallery {
+    column-count: 4;
+    column-gap: 1.25rem;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 1100px) { .gallery { column-count: 3; } }
+  @media (max-width: 750px)  { .gallery { column-count: 2; column-gap: 0.75rem; } }
+  @media (max-width: 480px)  { .gallery { column-count: 1; } }
+
+  .photo {
+    break-inside: avoid;
+    margin-bottom: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    background: var(--cream-deep);
+    cursor: pointer;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.8s ease;
+  }
+
+  @media (max-width: 750px) { .photo { margin-bottom: 0.75rem; } }
+
+  .photo.loaded { transform: translateY(0); opacity: 1; }
+
+  .photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.6s ease;
+  }
+
+  .photo:hover img {
+    transform: scale(1.04);
+    filter: brightness(0.92);
+  }
+
+  .photo .num {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: all 0.4s ease;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    pointer-events: none;
+  }
+
+  .photo:hover .num { opacity: 1; transform: translateY(0); }
+
+  .photo.placeholder {
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(110deg, var(--cream-deep) 8%, #e6dcc8 18%, var(--cream-deep) 33%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 17, 14, 0.96);
+    z-index: 100;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    backdrop-filter: blur(8px);
+  }
+
+  .lightbox.active {
+    display: flex;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lightbox-close,
+  .lightbox-nav {
+    position: absolute;
+    background: rgba(245, 239, 230, 0.1);
+    border: 1px solid rgba(245, 239, 230, 0.3);
+    color: var(--cream);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .lightbox-close:hover,
+  .lightbox-nav:hover {
+    background: var(--cream);
+    color: var(--ink);
+  }
+
+  .lightbox-close { top: 2rem; right: 2rem; }
+  .lightbox-prev { left: 2rem; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 2rem; top: 50%; transform: translateY(-50%); }
+
+  .lightbox-counter {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    color: rgba(245, 239, 230, 0.6);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .lightbox-note {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(245, 239, 230, 0.7);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    text-align: center;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 5rem 2rem 5rem;
+    border-top: 1px solid var(--rule);
+    margin: 3rem 2rem 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  footer .ornament-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+  }
+
+  footer .btn {
+    margin-top: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="ornament">~ with all our love ~</div>
+  <h1>Bride &amp; Groom</h1>
+  <div class="date-line">
+    <span class="rule"></span>
+    <span>Saturday · The Date · 2026</span>
+    <span class="rule"></span>
+  </div>
+  <p class="intro">
+    A small collection of moments from our day, kept here for you to revisit and download whenever you'd like. Thank you for being part of it.
+  </p>
+  <div class="actions">
+    <a href="#download" class="btn primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
+      </svg>
+      Download Photos
+    </a>
+    <a href="#gallery" class="btn">View Gallery</a>
+  </div>
+</header>
+
+<div class="divider"><span>~ moments ~</span></div>
+
+<section class="gallery-wrap" id="gallery">
+  <div class="gallery" id="grid"></div>
+</section>
+
+<!-- DOWNLOAD CALL-OUT -->
+<section class="download-banner" id="download">
+  <h2>Take Them Home</h2>
+  <p>The full collection — every photo in original quality — is just one click away. Hosted on Dropbox so you can browse, select, or download all 335 in one go.</p>
+  <a id="dropbox-link" href="#" target="_blank" rel="noopener" class="btn primary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
+    </svg>
+    Download All Photos (Dropbox)
+  </a>
+</section>
+
+<footer>
+  <div class="ornament-mark">&infin;</div>
+  <p>"And in their eyes, a love that needed no translation."</p>
+  <a id="dropbox-link-footer" href="#" target="_blank" rel="noopener" class="btn">
+    Download Originals
+  </a>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)" aria-label="Previous">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 6l-6 6 6 6"/></svg>
+  </button>
+  <img id="lightbox-img" src="" alt="" />
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)" aria-label="Next">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+  <div class="lightbox-note">For original quality, use the Dropbox download link below the gallery</div>
+  <div class="lightbox-counter" id="counter"></div>
+</div>
+
+<script>
+  /* ============================================================
+     CONFIGURATION — EDIT THESE TWO VARIABLES
+     ============================================================ */
+
+  // 1. Paste your Dropbox folder share link here
+  //    (the link you get from "Share folder" in Dropbox)
+  const DROPBOX_LINK = 'https://www.dropbox.com/scl/fo/a6lhe7iz1lw270gtmcq55/AJlgz6ClDm35ImHNjy1HbfA?rlkey=m6np17xz8itsfwtshd95823q6&dl=0';
+
+  // 2. Set how many photos you have
+  const PHOTO_COUNT = 335;
+
+  // 3. Filename pattern — these should match the JPGs in your /thumbs/ folder
+  //    Example below assumes wedding_001.jpg ... wedding_335.jpg
+  function getThumbPath(index) {
+    const num = String(index).padStart(3, '0');
+    return `thumbs/wedding_${num}.jpg`;
+  }
+
+  /* ============================================================
+     DEMO MODE — set to false once you've added your real photos
+     ============================================================ */
+  const DEMO_MODE = false;
+
+  /* ============================================================
+     RENDER GALLERY
+     ============================================================ */
+  document.getElementById('dropbox-link').href = DROPBOX_LINK;
+  document.getElementById('dropbox-link-footer').href = DROPBOX_LINK;
+
+  const photos = [];
+  if (DEMO_MODE) {
+    const seeds = ['wedding','bride','flowers','rings','couple','dance','toast','cake','venue','sunset'];
+    for (let i = 1; i <= 60; i++) {
+      const seed = seeds[i % seeds.length];
+      const h = 600 + (i * 37) % 400;
+      photos.push({
+        thumb: `https://picsum.photos/seed/${seed}${i}/800/${h}`,
+        full:  `https://picsum.photos/seed/${seed}${i}/2000/${Math.round(h*2.5)}`
+      });
+    }
+  } else {
+    for (let i = 1; i <= PHOTO_COUNT; i++) {
+      photos.push({
+        thumb: getThumbPath(i),
+        full:  getThumbPath(i)  // lightbox shows the same thumb; originals go through Dropbox
+      });
+    }
+  }
+
+  const grid = document.getElementById('grid');
+
+  photos.forEach((photo, idx) => {
+    const div = document.createElement('div');
+    div.className = 'photo placeholder';
+    div.dataset.index = idx;
+
+    const img = document.createElement('img');
+    img.alt = `Wedding photo ${idx + 1}`;
+    img.loading = 'lazy';
+    img.dataset.src = photo.thumb;
+
+    img.addEventListener('load', () => {
+      div.classList.remove('placeholder');
+      requestAnimationFrame(() => div.classList.add('loaded'));
+    });
+
+    div.appendChild(img);
+
+    const num = document.createElement('span');
+    num.className = 'num';
+    num.textContent = String(idx + 1).padStart(3, '0');
+    div.appendChild(num);
+
+    div.addEventListener('click', () => openLightbox(idx));
+    grid.appendChild(div);
+  });
+
+  // Lazy load with IntersectionObserver
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target.querySelector('img');
+        if (img && !img.src && img.dataset.src) {
+          img.src = img.dataset.src;
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '400px 0px' });
+
+  document.querySelectorAll('.photo').forEach(p => observer.observe(p));
+
+  /* ============================================================
+     LIGHTBOX
+     ============================================================ */
+  let currentIdx = 0;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const counter = document.getElementById('counter');
+
+  function openLightbox(idx) {
+    currentIdx = idx;
+    updateLightbox();
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function navLightbox(dir) {
+    currentIdx = (currentIdx + dir + photos.length) % photos.length;
+    updateLightbox();
+  }
+
+  function updateLightbox() {
+    lightboxImg.src = photos[currentIdx].full;
+    counter.textContent = `${String(currentIdx + 1).padStart(3,'0')} / ${String(photos.length).padStart(3,'0')}`;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+</script>
+
+</body>
+</html>
