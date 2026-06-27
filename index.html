@@ -219,25 +219,6 @@
     border: 0;
   }
 
-  /* Scrim that masks the YouTube title/channel bar at the top of the player.
-     Near-opaque where the title sits, fading out so it reads as a cinematic
-     top vignette. pointer-events:none keeps the play button + controls usable. */
-  .film-frame::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 22%;
-    background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.96) 0%,
-      rgba(0, 0, 0, 0.9) 38%,
-      rgba(0, 0, 0, 0.55) 68%,
-      transparent 100%);
-    pointer-events: none;
-    z-index: 2;
-  }
-
   /* DIVIDER */
   .divider {
     text-align: center;
