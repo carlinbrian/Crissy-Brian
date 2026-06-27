@@ -183,6 +183,42 @@
     margin-right: auto;
   }
 
+  /* FILM */
+  .film-wrap {
+    padding: 0 2rem 2rem;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .film-intro {
+    max-width: 540px;
+    margin: 0 auto 2.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .film-frame {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: var(--cream-deep);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .film-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
   /* DIVIDER */
   .divider {
     text-align: center;
@@ -424,9 +460,31 @@
       </svg>
       Download Photos
     </a>
+    <a href="#film" class="btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+      Watch the Film
+    </a>
     <a href="#gallery" class="btn">View Gallery</a>
   </div>
 </header>
+
+<div class="divider"><span>~ the film ~</span></div>
+
+<section class="film-wrap" id="film">
+  <p class="film-intro">
+    Press play and relive the day with us — the vows, the laughter, every dance.
+  </p>
+  <div class="film-frame">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/YIC9A2_v7zA?rel=0"
+      title="Cristina &amp; Brian — The Film"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </div>
+</section>
 
 <div class="divider"><span>~ moments ~</span></div>
 
