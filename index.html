@@ -402,10 +402,6 @@
     max-width: 500px;
     margin: 0 auto 2rem;
   }
-
-  footer .btn {
-    margin-top: 1rem;
-  }
 </style>
 </head>
 <body>
@@ -452,10 +448,6 @@
 
 <footer>
   <div class="ornament-mark">&infin;</div>
-  <p>"And in their eyes, a love that needed no translation."</p>
-  <a id="dropbox-link-footer" href="#" target="_blank" rel="noopener" class="btn">
-    Download Originals
-  </a>
 </footer>
 
 <!-- LIGHTBOX -->
@@ -502,7 +494,6 @@
      RENDER GALLERY
      ============================================================ */
   document.getElementById('dropbox-link').href = DROPBOX_LINK;
-  document.getElementById('dropbox-link-footer').href = DROPBOX_LINK;
 
   const photos = [];
   if (DEMO_MODE) {
